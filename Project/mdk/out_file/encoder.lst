@@ -1,0 +1,86 @@
+C251 COMPILER V5.60.0,  encoder                                                            04/12/25  23:04:59  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE encoder
+OBJECT MODULE PLACED IN .\out_file\encoder.obj
+COMPILER INVOKED BY: D:\Keil\C251\BIN\C251.EXE ..\code\encoder.c LARGE NOALIAS FLOAT64 WARNINGLEVEL(3) OPTIMIZE(SIZE) BR
+                    -OWSE INCDIR(..\..\libraries\zf_common;..\..\libraries\zf_components;..\..\libraries\zf_device;..\..\libraries\zf_driver;
+                    -..\user;..\code) DEBUG PRINT(.\out_file\encoder.lst) OBJECT(.\out_file\encoder.obj) 
+
+stmt  level    source
+
+    1          #include "zf_common_headfile.h"
+    2          
+    3          // º¯Êý×÷ÓÃ£º³õÊ¼»¯±àÂëÆ÷
+    4          // Ê¹ÓÃÊ¾Àý: Encoder_Init();
+    5          void Encoder_Init(void)
+    6          {
+    7   1          encoder_dir_init(ENCODER_L, ENCODER_DIR_L, ENCODER_PULSE_L);        // ³õÊ¼»¯±àÂëÆ÷Ä£¿éÓëÒý½Å ´ø·½ÏòÔöÁ¿±
+             -àÂëÆ÷Ä£Ê½
+    8   1          encoder_dir_init(ENCODER_R, ENCODER_DIR_R, ENCODER_PULSE_R);    // ³õÊ¼»¯±àÂëÆ÷Ä£¿éÓëÒý½Å ´ø·½ÏòÔöÁ¿±
+             -àÂëÆ÷Ä£Ê½
+    9   1      }
+   10          
+   11          // º¯Êý×÷ÓÃ£º»ñÈ¡×ó²àµç»ú±àÂëÆ÷×ªËÙ
+   12          // Ê¹ÓÃÊ¾Àý: Encoder_left = Encoder_Left_Get();
+   13          float Encoder_Left_Get(void)
+   14          {
+   15   1              static int temp0 = 0,temp1 = 0,temp2 = 0;              // ¾ùÖµÂË²¨
+   16   1              temp1 = temp0;
+   17   1              temp2 = temp1;
+   18   1              if(ENCODER_DIR_L)
+   19   1                      temp0 = -encoder_get_count(ENCODER_L);                  // »ñÈ¡±àÂëÆ÷¼ÆÊý
+   20   1              else
+   21   1                      temp0 = encoder_get_count(ENCODER_L);                  // »ñÈ¡±àÂëÆ÷¼ÆÊý
+   22   1              temp0 = temp0*0.4 + temp1*0.3 + temp2*0.3;
+   23   1              encoder_clear_count(ENCODER_L);                        // Çå¿Õ±àÂëÆ÷¼ÆÊý
+   24   1              return temp0;                                   
+   25   1      }
+   26          
+   27          // º¯Êý×÷ÓÃ£º»ñÈ¡ÓÒ²àµç»ú±àÂëÆ÷×ªËÙ
+   28          // Ê¹ÓÃÊ¾Àý: Encoder_Right = Encoder_Right_Get();
+   29          float Encoder_Right_Get(void)
+   30          {
+   31   1              static int temp0 = 0,temp1 = 0,temp2 = 0;              // ¾ùÖµÂË²¨
+   32   1              temp1 = temp0;
+   33   1              temp2 = temp1;
+   34   1              if(ENCODER_DIR_R)
+   35   1                      temp0 = encoder_get_count(ENCODER_R);                  // »ñÈ¡±àÂëÆ÷¼ÆÊý
+   36   1              else
+   37   1                      temp0 = -encoder_get_count(ENCODER_R);
+   38   1              temp0 = temp0*0.4 + temp1*0.3 + temp2*0.3;
+   39   1              encoder_clear_count(ENCODER_R);                        // Çå¿Õ±àÂëÆ÷¼ÆÊý
+   40   1              return temp0;
+   41   1      }
+   42               
+   43          
+   44          
+   45          
+*** WARNING C177 IN LINE 21 OF ..\code\encoder.c: unreachable code
+*** WARNING C177 IN LINE 37 OF ..\code\encoder.c: unreachable code
+
+
+Module Information          Static   Overlayable
+------------------------------------------------
+  code size            =       372     ------
+  ecode size           =    ------     ------
+  data size            =    ------     ------
+  idata size           =    ------     ------
+  pdata size           =    ------     ------
+C251 COMPILER V5.60.0,  encoder                                                            04/12/25  23:04:59  PAGE 2   
+
+  xdata size           =        12     ------
+  xdata-const size     =    ------     ------
+  edata size           =    ------     ------
+  bit size             =    ------     ------
+  ebit size            =    ------     ------
+  bitaddressable size  =    ------     ------
+  ebitaddressable size =    ------     ------
+  far data size        =    ------     ------
+  huge data size       =    ------     ------
+  const size           =    ------     ------
+  hconst size          =        42     ------
+End of Module Information.
+
+
+C251 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

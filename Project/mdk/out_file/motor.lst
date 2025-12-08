@@ -1,0 +1,93 @@
+C251 COMPILER V5.60.0,  motor                                                              04/12/25  23:04:58  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE motor
+OBJECT MODULE PLACED IN .\out_file\motor.obj
+COMPILER INVOKED BY: D:\Keil\C251\BIN\C251.EXE ..\code\motor.c LARGE NOALIAS FLOAT64 WARNINGLEVEL(3) OPTIMIZE(SIZE) BROW
+                    -SE INCDIR(..\..\libraries\zf_common;..\..\libraries\zf_components;..\..\libraries\zf_device;..\..\libraries\zf_driver;..
+                    -\user;..\code) DEBUG PRINT(.\out_file\motor.lst) OBJECT(.\out_file\motor.obj) 
+
+stmt  level    source
+
+    1          
+    2          #include "zf_common_headfile.h"
+    3          
+    4          //∫Ø ˝◊˜”√£∫≥ı ºªØµÁª˙
+    5          // π”√ æ¿˝£∫Motor_PWM_Init();
+    6          void Motor_PWM_Init(void)
+    7          {
+    8   1              gpio_init(DIR_L, GPO, GPIO_HIGH, GPO_PUSH_PULL);                            // GPIO ≥ı ºªØŒ™ ‰≥ˆ ƒ¨»œ…œ¿
+             -≠ ‰≥ˆ∏ﬂ
+    9   1          pwm_init(PWM_L, 17000, 0);                                                  // PWM Õ®µ¿≥ı ºªØ∆µ¬  17K
+             -Hz ’ºø’±»≥ı ºŒ™ 0
+   10   1      
+   11   1          gpio_init(DIR_R, GPO, GPIO_HIGH, GPO_PUSH_PULL);                            // GPIO ≥ı ºªØŒ™ ‰≥ˆ ƒ¨»œ
+             -…œ¿≠ ‰≥ˆ∏ﬂ
+   12   1          pwm_init(PWM_R, 17000, 0);                                                  // PWM Õ®µ¿≥ı ºªØ∆µ¬  17K
+             -Hz ’ºø’±»≥ı ºŒ™ 0                                  
+   13   1      }
+   14          
+   15          //∫Ø ˝◊˜”√£∫µ˜’˚◊Û”“µÁª˙’ºø’±»/◊™ÀŸ
+   16          // π”√ æ¿˝£∫Motor_Out(30£¨30); 
+   17          //PS£∫∏√∫Ø ˝”–œﬁ∑˘(º´÷µ…Ë∂®)£¨»Áπ˚œÎÃ·ÀŸµΩÕ∑Œƒº˛µ˜’˚°£
+   18          void Motor_Out(int8 left_duty,int8 right_duty)
+   19          {
+   20   1          if(left_duty >= 0)                                                           // ◊Û≤‡’˝◊™
+   21   1          {
+   22   2                      left_duty = left_duty >= MAX_DUTY ? MAX_DUTY: left_duty;                                 // œﬁ∑˘
+   23   2              gpio_set_level(DIR_L, GPIO_HIGH);                                        // DIR ‰≥ˆ∏ﬂµÁ∆Ω
+   24   2              pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));                   // º∆À„’ºø’±»           
+             -                     
+   25   2          }
+   26   1              else                                                                         // ◊Û≤‡∑¥◊™
+   27   1          {
+   28   2                  left_duty = (-left_duty) >= MAX_DUTY ? MAX_DUTY: (-left_duty);
+   29   2              gpio_set_level(DIR_L, GPIO_LOW);                                         // DIR ‰≥ˆµÕµÁ∆Ω
+   30   2              pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));                   // º∆À„’ºø’±»
+   31   2              }
+   32   1              if(right_duty >= 0) 
+   33   1              {
+   34   2                      right_duty = right_duty >= MAX_DUTY ? MAX_DUTY: right_duty;
+   35   2              gpio_set_level(DIR_R, GPIO_HIGH);                                         // DIR ‰≥ˆ∏ﬂµÁ∆Ω
+   36   2              pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100));                   // º∆À„’ºø’±»
+   37   2              }               
+   38   1              else
+   39   1              {
+   40   2                      right_duty = (-right_duty) >= MAX_DUTY ? MAX_DUTY: (-right_duty);
+   41   2              gpio_set_level(DIR_R, GPIO_LOW);                                          // DIR ‰≥ˆµÕµÁ∆Ω
+   42   2              pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100));                                   // º∆À„’ºø’±»
+   43   2          }
+   44   1      }
+   45          
+   46          
+   47          
+   48          
+   49          
+   50          
+   51          
+
+C251 COMPILER V5.60.0,  motor                                                              04/12/25  23:04:58  PAGE 2   
+
+
+Module Information          Static   Overlayable
+------------------------------------------------
+  code size            =       251     ------
+  ecode size           =    ------     ------
+  data size            =    ------     ------
+  idata size           =    ------     ------
+  pdata size           =    ------     ------
+  xdata size           =    ------     ------
+  xdata-const size     =    ------     ------
+  edata size           =    ------     ------
+  bit size             =    ------     ------
+  ebit size            =    ------     ------
+  bitaddressable size  =    ------     ------
+  ebitaddressable size =    ------     ------
+  far data size        =    ------     ------
+  huge data size       =    ------     ------
+  const size           =    ------     ------
+  hconst size          =    ------     ------
+End of Module Information.
+
+
+C251 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,56 @@
+C251 COMPILER V5.60.0,  servo_control                                                      04/12/25  23:04:58  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE servo_control
+OBJECT MODULE PLACED IN .\out_file\servo_control.obj
+COMPILER INVOKED BY: D:\Keil\C251\BIN\C251.EXE ..\code\servo_control.c LARGE NOALIAS FLOAT64 WARNINGLEVEL(3) OPTIMIZE(SI
+                    -ZE) BROWSE INCDIR(..\..\libraries\zf_common;..\..\libraries\zf_components;..\..\libraries\zf_device;..\..\libraries\zf_d
+                    -river;..\user;..\code) DEBUG PRINT(.\out_file\servo_control.lst) OBJECT(.\out_file\servo_control.obj) 
+
+stmt  level    source
+
+    1          
+    2          //该模块用于调整舵机的反应速度与方向
+    3          
+    4          #include "zf_common_headfile.h"
+    5          
+    6          //函数作用：初始化servo_control舵机模块的PWM
+    7          //使用示例：Servo_PWM_Init()
+    8          void Servo_PWM_Init(void)
+    9          {
+   10   1              pwm_init(SERVO_PWM, SERVO_FREQ, 0);
+   11   1      }
+   12          
+   13          //函数作用：用舵机控制车辆左右转，0左1右。若要使舵机正向.
+   14          //使用示例：Turn_Angle(30,0)左转度
+   15          void Turn_Angle(float angle)
+   16          {
+   17   1              angle += ADJ_ERROR;
+   18   1              pwm_set_duty(SERVO_PWM, (uint32)SERVO_DUTY(angle));
+   19   1      }
+   20          
+   21          
+
+
+Module Information          Static   Overlayable
+------------------------------------------------
+  code size            =        83     ------
+  ecode size           =    ------     ------
+  data size            =    ------     ------
+  idata size           =    ------     ------
+  pdata size           =    ------     ------
+  xdata size           =    ------     ------
+  xdata-const size     =    ------     ------
+  edata size           =    ------     ------
+  bit size             =    ------     ------
+  ebit size            =    ------     ------
+  bitaddressable size  =    ------     ------
+  ebitaddressable size =    ------     ------
+  far data size        =    ------     ------
+  huge data size       =    ------     ------
+  const size           =    ------     ------
+  hconst size          =    ------     ------
+End of Module Information.
+
+
+C251 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
