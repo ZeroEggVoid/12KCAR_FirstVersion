@@ -1,4 +1,3 @@
-// forth check
 #include "zf_common_headfile.h"
 
 float acc_x;
