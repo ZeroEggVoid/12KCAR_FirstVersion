@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/代晟琨/大学/比赛&活动/智能车/协作库/12KCAR_FirstVersion-1/Libraries/zf_components",
-      "program": "d:/代晟琨/大学/比赛&活动/智能车/协作库/12KCAR_FirstVersion-1/Libraries/zf_components/build/Debug/outDebug",
+      "cwd": "d:/代晟琨/大学/比赛&活动/智能车/协作库/12KCAR_FirstVersion-1/Project/code",
+      "program": "d:/代晟琨/大学/比赛&活动/智能车/协作库/12KCAR_FirstVersion-1/Project/code/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

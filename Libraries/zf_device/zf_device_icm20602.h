@@ -183,7 +183,7 @@ extern int16 icm20602_acc_x, icm20602_acc_y, icm20602_acc_z;                    
 extern float icm20602_transition_factor[2];
 
 void    icm20602_get_acc            (void);
-void    icm20602_get_gyro           (void);
+void     icm20602_get_gyro           (void);
 
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     将 ICM20602 加速度计数据转换为实际物理数据
