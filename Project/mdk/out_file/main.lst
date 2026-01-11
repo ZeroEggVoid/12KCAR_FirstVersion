@@ -1,4 +1,4 @@
-C251 COMPILER V5.60.0,  main                                                               04/12/25  23:05:00  PAGE 1   
+C251 COMPILER V5.60.0,  main                                                               11/01/26  21:23:43  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE main
@@ -9,35 +9,43 @@ COMPILER INVOKED BY: D:\Keil\C251\BIN\C251.EXE ..\user\main.c LARGE NOALIAS FLOA
 
 stmt  level    source
 
-    1          
+    1          // forth check
     2          #include "zf_common_headfile.h"
     3          
-    4          void main()
-    5          {
-    6   1          clock_init(SYSTEM_CLOCK_30M);
-    7   1              debug_init();
-    8   1              Motor_PWM_Init();
-    9   1              Servo_PWM_Init();
-   10   1              Encoder_Init();
-   11   1              LCD_Init();
-   12   1              
-   13   1          while(1)
-   14   1          {
-   15   2                      Motor_Out(10,10);
-   16   2                      Turn_Angle(75); 
-   17   2                      LCD_Disp();
-   18   2          }
-   19   1      }
+    4          float acc_x;
+    5          float gyro_x;
+    6          void main()
+    7          {
+    8   1              clock_init(SYSTEM_CLOCK_30M);
+    9   1              debug_init();
+   10   1              Motor_PWM_Init();
+   11   1              Servo_PWM_Init();
+   12   1              Encoder_Init();
+   13   1              LCD_Init();
+   14   1              posture_sensor_init();
+   15   1      
+   16   1              while (1)
+   17   1              {
+   18   2                      Motor_Out(10, 10);
+   19   2                      Turn_Angle(90);
+   20   2                      LCD_Disp();
+   21   2                      posture_sensor_get_data();
+   22   2                      acc_x=posture_sensor_get_acc_x();
+   23   2                      gyro_x=posture_sensor_get_gyro_x();
+   24   2                      printf("%f,%f",acc_x,gyro_x);
+   25   2                      
+   26   2              }
+   27   1      }
 
 
 Module Information          Static   Overlayable
 ------------------------------------------------
-  code size            =        84     ------
+  code size            =       183     ------
   ecode size           =    ------     ------
   data size            =    ------     ------
   idata size           =    ------     ------
   pdata size           =    ------     ------
-  xdata size           =    ------     ------
+  xdata size           =         8     ------
   xdata-const size     =    ------     ------
   edata size           =    ------     ------
   bit size             =    ------     ------
@@ -47,7 +55,7 @@ Module Information          Static   Overlayable
   far data size        =    ------     ------
   huge data size       =    ------     ------
   const size           =    ------     ------
-  hconst size          =         2     ------
+  hconst size          =         8     ------
 End of Module Information.
 
 

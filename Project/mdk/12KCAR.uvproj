@@ -805,14 +805,14 @@
               <FilePath>..\code\tft180.h</FilePath>
             </File>
             <File>
-              <FileName>imu660ra.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\code\imu660ra.h</FilePath>
+              <FileName>posture_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\code\posture_sensor.c</FilePath>
             </File>
             <File>
-              <FileName>imu660ra.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\code\imu660ra.c</FilePath>
+              <FileName>posture_sensor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\code\posture_sensor.h</FilePath>
             </File>
           </Files>
         </Group>

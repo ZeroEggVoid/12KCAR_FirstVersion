@@ -43,7 +43,7 @@
 ".\out_file\encoder.obj",
 ".\out_file\ble6a20.obj",
 ".\out_file\tft180.obj",
-".\out_file\imu660ra.obj",
+".\out_file\posture_sensor.obj",
 ".\out_file\isr.obj",
 ".\out_file\main.obj" 
 TO ".\out_file\12KCAR" 
