@@ -1,28 +1,24 @@
 
 #include "zf_common_headfile.h"
 
-
 uint8 data_buffer[32];
 uint8 data_read[32];
 uint8 data_len;
-		
+
 void Fault_Detect(void)
 {
-	gpio_init(IO_P52, GPO, GPIO_HIGH, GPO_PUSH_PULL);                             // ³õÊ¼»¯ LED1 Êä³ö Ä¬ÈÏ¸ßµçÆ½ ÍÆÍìÊä³öÄ£Ê½
-    while(ble6a20_init())                                                       // ÅÐ¶ÏÊÇ·ñÍ¨¹ý³õÊ¼»¯
+    gpio_init(IO_P52, GPO, GPIO_HIGH, GPO_PUSH_PULL); // ï¿½ï¿½Ê¼ï¿½ï¿½ LED1 ï¿½ï¿½ï¿½ Ä¬ï¿½Ï¸ßµï¿½Æ½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    while (ble6a20_init())                            // ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
     {
-        gpio_toggle_level(IO_P52);                                                // ·­×ª LED Òý½ÅÊä³öµçÆ½ ¿ØÖÆ LED ÁÁÃð
-        system_delay_ms(100);                                                   // ¶ÌÑÓÊ±¿ìËÙÉÁµÆ±íÊ¾Òì³£
+        gpio_toggle_level(IO_P52); // ï¿½ï¿½×ª LED ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ ï¿½ï¿½ï¿½ï¿½ LED ï¿½ï¿½ï¿½ï¿½
+        system_delay_ms(100);      // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±ï¿½Ê¾ï¿½ì³£
     }
     ble6a20_send_byte('\r');
     ble6a20_send_byte('\n');
-    ble6a20_send_string("JUST DO IT.\r\n");                    // ³õÊ¼»¯Õý³£ Êä³ö²âÊÔÐÅÏ¢
+    ble6a20_send_string("JUST DO IT.\r\n"); // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 }
-
 
 void Parm_Fb(void)
 {
-	ble6a20_send_string("JUST DO IT.\r\n");
-
+    ble6a20_send_string("JUST DO IT.\r\n");
 }
-
