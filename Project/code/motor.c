@@ -1,51 +1,44 @@
 
 #include "zf_common_headfile.h"
 
-//º¯Êý×÷ÓÃ£º³õÊ¼»¯µç»ú
-//Ê¹ÓÃÊ¾Àý£ºMotor_PWM_Init();
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+// Ê¹ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Motor_PWM_Init();
 void Motor_PWM_Init(void)
 {
-	gpio_init(DIR_L, GPO, GPIO_HIGH, GPO_PUSH_PULL);                            // GPIO ³õÊ¼»¯ÎªÊä³ö Ä¬ÈÏÉÏÀ­Êä³ö¸ß
-    pwm_init(PWM_L, 17000, 0);                                                  // PWM Í¨µÀ³õÊ¼»¯ÆµÂÊ 17KHz Õ¼¿Õ±È³õÊ¼Îª 0
+    gpio_init(DIR_L, GPO, GPIO_HIGH, GPO_PUSH_PULL); // GPIO ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    pwm_init(PWM_L, 17000, 0);                       // PWM Í¨ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Æµï¿½ï¿½ 17KHz Õ¼ï¿½Õ±È³ï¿½Ê¼Îª 0
 
-    gpio_init(DIR_R, GPO, GPIO_HIGH, GPO_PUSH_PULL);                            // GPIO ³õÊ¼»¯ÎªÊä³ö Ä¬ÈÏÉÏÀ­Êä³ö¸ß
-    pwm_init(PWM_R, 17000, 0);                                                  // PWM Í¨µÀ³õÊ¼»¯ÆµÂÊ 17KHz Õ¼¿Õ±È³õÊ¼Îª 0                                  
+    gpio_init(DIR_R, GPO, GPIO_HIGH, GPO_PUSH_PULL); // GPIO ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    pwm_init(PWM_R, 17000, 0);                       // PWM Í¨ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Æµï¿½ï¿½ 17KHz Õ¼ï¿½Õ±È³ï¿½Ê¼Îª 0
 }
 
-//º¯Êý×÷ÓÃ£ºµ÷Õû×óÓÒµç»úÕ¼¿Õ±È/×ªËÙ
-//Ê¹ÓÃÊ¾Àý£ºMotor_Out(30£¬30); 
-//PS£º¸Ãº¯ÊýÓÐÏÞ·ù(¼«ÖµÉè¶¨)£¬Èç¹ûÏëÌáËÙµ½Í·ÎÄ¼þµ÷Õû¡£
-void Motor_Out(int8 left_duty,int8 right_duty)
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Õ¼ï¿½Õ±ï¿½/×ªï¿½ï¿½
+// Ê¹ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Motor_Out(30ï¿½ï¿½30);
+// PSï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½(ï¿½ï¿½Öµï¿½è¶¨)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void Motor_Out(int8 left_duty, int8 right_duty)
 {
-    if(left_duty >= 0)                                                           // ×ó²àÕý×ª
+    if (left_duty >= 0) // ï¿½ï¿½ï¿½ï¿½ï¿½×ª
     {
-		left_duty = left_duty >= MAX_DUTY ? MAX_DUTY: left_duty;				 // ÏÞ·ù
-        gpio_set_level(DIR_L, GPIO_HIGH);                                        // DIRÊä³ö¸ßµçÆ½
-        pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));                   // ¼ÆËãÕ¼¿Õ±È                                
+        left_duty = left_duty >= MAX_DUTY ? MAX_DUTY : left_duty; // ï¿½Þ·ï¿½
+        gpio_set_level(DIR_L, GPIO_HIGH);                         // DIRï¿½ï¿½ï¿½ï¿½ßµï¿½Æ½
+        pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));    // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
     }
-	else                                                                         // ×ó²à·´×ª
+    else // ï¿½ï¿½à·´×ª
     {
-	    left_duty = (-left_duty) >= MAX_DUTY ? MAX_DUTY: (-left_duty);
-        gpio_set_level(DIR_L, GPIO_LOW);                                         // DIRÊä³öµÍµçÆ½
-        pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));                   // ¼ÆËãÕ¼¿Õ±È
-	}
-	if(right_duty >= 0) 
-	{
-		right_duty = right_duty >= MAX_DUTY ? MAX_DUTY: right_duty;
-        gpio_set_level(DIR_R, GPIO_HIGH);                                         // DIRÊä³ö¸ßµçÆ½
-        pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100));                   // ¼ÆËãÕ¼¿Õ±È
-	}		
-	else
-	{
-		right_duty = (-right_duty) >= MAX_DUTY ? MAX_DUTY: (-right_duty);
-        gpio_set_level(DIR_R, GPIO_LOW);                                          // DIRÊä³öµÍµçÆ½
-        pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100)); 				  // ¼ÆËãÕ¼¿Õ±È
+        left_duty = (-left_duty) >= MAX_DUTY ? MAX_DUTY : (-left_duty);
+        gpio_set_level(DIR_L, GPIO_LOW);                       // DIRï¿½ï¿½ï¿½ï¿½Íµï¿½Æ½
+        pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100)); // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
+    }
+    if (right_duty >= 0)
+    {
+        right_duty = right_duty >= MAX_DUTY ? MAX_DUTY : right_duty;
+        gpio_set_level(DIR_R, GPIO_HIGH);                       // DIRï¿½ï¿½ï¿½ï¿½ßµï¿½Æ½
+        pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100)); // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
+    }
+    else
+    {
+        right_duty = (-right_duty) >= MAX_DUTY ? MAX_DUTY : (-right_duty);
+        gpio_set_level(DIR_R, GPIO_LOW);                        // DIRï¿½ï¿½ï¿½ï¿½Íµï¿½Æ½
+        pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100)); // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
     }
 }
-
-
-
-
-
-
-
