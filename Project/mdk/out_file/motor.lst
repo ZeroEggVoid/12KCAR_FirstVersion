@@ -1,4 +1,4 @@
-C251 COMPILER V5.60.0,  motor                                                              04/12/25  23:04:58  PAGE 1   
+C251 COMPILER V5.60.0,  motor                                                              11/01/26  21:17:35  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE motor
@@ -12,61 +12,52 @@ stmt  level    source
     1          
     2          #include "zf_common_headfile.h"
     3          
-    4          //º¯Êý×÷ÓÃ£º³õÊ¼»¯µç»ú
-    5          //Ê¹ÓÃÊ¾Àý£ºMotor_PWM_Init();
+    4          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+    5          // Ê¹ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Motor_PWM_Init();
     6          void Motor_PWM_Init(void)
     7          {
-    8   1              gpio_init(DIR_L, GPO, GPIO_HIGH, GPO_PUSH_PULL);                            // GPIO ³õÊ¼»¯ÎªÊä³ö Ä¬ÈÏÉÏÀ
-             -­Êä³ö¸ß
-    9   1          pwm_init(PWM_L, 17000, 0);                                                  // PWM Í¨µÀ³õÊ¼»¯ÆµÂÊ 17K
-             -Hz Õ¼¿Õ±È³õÊ¼Îª 0
+    8   1          gpio_init(DIR_L, GPO, GPIO_HIGH, GPO_PUSH_PULL); // GPIO ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï
+             -¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    9   1          pwm_init(PWM_L, 17000, 0);                       // PWM Í¨ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Æµï¿½ï¿½ 17KHz Õ¼ï¿½Õ±È
+             -³ï¿½Ê¼Îª 0
    10   1      
-   11   1          gpio_init(DIR_R, GPO, GPIO_HIGH, GPO_PUSH_PULL);                            // GPIO ³õÊ¼»¯ÎªÊä³ö Ä¬ÈÏ
-             -ÉÏÀ­Êä³ö¸ß
-   12   1          pwm_init(PWM_R, 17000, 0);                                                  // PWM Í¨µÀ³õÊ¼»¯ÆµÂÊ 17K
-             -Hz Õ¼¿Õ±È³õÊ¼Îª 0                                  
+   11   1          gpio_init(DIR_R, GPO, GPIO_HIGH, GPO_PUSH_PULL); // GPIO ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï
+             -¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   12   1          pwm_init(PWM_R, 17000, 0);                       // PWM Í¨ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Æµï¿½ï¿½ 17KHz Õ¼ï¿½Õ±È
+             -³ï¿½Ê¼Îª 0
    13   1      }
    14          
-   15          //º¯Êý×÷ÓÃ£ºµ÷Õû×óÓÒµç»úÕ¼¿Õ±È/×ªËÙ
-   16          //Ê¹ÓÃÊ¾Àý£ºMotor_Out(30£¬30); 
-   17          //PS£º¸Ãº¯ÊýÓÐÏÞ·ù(¼«ÖµÉè¶¨)£¬Èç¹ûÏëÌáËÙµ½Í·ÎÄ¼þµ÷Õû¡£
-   18          void Motor_Out(int8 left_duty,int8 right_duty)
+   15          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Õ¼ï¿½Õ±ï¿½/×ªï¿½ï¿½
+   16          // Ê¹ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Motor_Out(30ï¿½ï¿½30);
+   17          // PSï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½(ï¿½ï¿½Öµï¿½è¶¨)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿
+             -½ï¿½ï¿½ï¿½ï¿½
+   18          void Motor_Out(int8 left_duty, int8 right_duty)
    19          {
-   20   1          if(left_duty >= 0)                                                           // ×ó²àÕý×ª
+   20   1          if (left_duty >= 0) // ï¿½ï¿½ï¿½ï¿½ï¿½×ª
    21   1          {
-   22   2                      left_duty = left_duty >= MAX_DUTY ? MAX_DUTY: left_duty;                                 // ÏÞ·ù
-   23   2              gpio_set_level(DIR_L, GPIO_HIGH);                                        // DIRÊä³ö¸ßµçÆ½
-   24   2              pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));                   // ¼ÆËãÕ¼¿Õ±È           
-             -                     
+   22   2              left_duty = left_duty >= MAX_DUTY ? MAX_DUTY : left_duty; // ï¿½Þ·ï¿½
+   23   2              gpio_set_level(DIR_L, GPIO_HIGH);                         // DIRï¿½ï¿½ï¿½ï¿½ßµï¿½Æ½
+   24   2              pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));    // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
    25   2          }
-   26   1              else                                                                         // ×ó²à·´×ª
+   26   1          else // ï¿½ï¿½à·´×ª
    27   1          {
-   28   2                  left_duty = (-left_duty) >= MAX_DUTY ? MAX_DUTY: (-left_duty);
-   29   2              gpio_set_level(DIR_L, GPIO_LOW);                                         // DIRÊä³öµÍµçÆ½
-   30   2              pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100));                   // ¼ÆËãÕ¼¿Õ±È
-   31   2              }
-   32   1              if(right_duty >= 0) 
-   33   1              {
-   34   2                      right_duty = right_duty >= MAX_DUTY ? MAX_DUTY: right_duty;
-   35   2              gpio_set_level(DIR_R, GPIO_HIGH);                                         // DIRÊä³ö¸ßµçÆ½
-   36   2              pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100));                   // ¼ÆËãÕ¼¿Õ±È
-   37   2              }               
-   38   1              else
-   39   1              {
-   40   2                      right_duty = (-right_duty) >= MAX_DUTY ? MAX_DUTY: (-right_duty);
-   41   2              gpio_set_level(DIR_R, GPIO_LOW);                                          // DIRÊä³öµÍµçÆ½
-   42   2              pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100));                                   // ¼ÆËãÕ¼¿Õ±È
+   28   2              left_duty = (-left_duty) >= MAX_DUTY ? MAX_DUTY : (-left_duty);
+   29   2              gpio_set_level(DIR_L, GPIO_LOW);                       // DIRï¿½ï¿½ï¿½ï¿½Íµï¿½Æ½
+   30   2              pwm_set_duty(PWM_L, left_duty * (PWM_DUTY_MAX / 100)); // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
+   31   2          }
+   32   1          if (right_duty >= 0)
+   33   1          {
+   34   2              right_duty = right_duty >= MAX_DUTY ? MAX_DUTY : right_duty;
+   35   2              gpio_set_level(DIR_R, GPIO_HIGH);                       // DIRï¿½ï¿½ï¿½ï¿½ßµï¿½Æ½
+   36   2              pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100)); // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
+   37   2          }
+   38   1          else
+   39   1          {
+   40   2              right_duty = (-right_duty) >= MAX_DUTY ? MAX_DUTY : (-right_duty);
+   41   2              gpio_set_level(DIR_R, GPIO_LOW);                        // DIRï¿½ï¿½ï¿½ï¿½Íµï¿½Æ½
+   42   2              pwm_set_duty(PWM_R, right_duty * (PWM_DUTY_MAX / 100)); // ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Õ±ï¿½
    43   2          }
    44   1      }
-   45          
-   46          
-   47          
-   48          
-   49          
-   50          
-   51          
-
-C251 COMPILER V5.60.0,  motor                                                              04/12/25  23:04:58  PAGE 2   
 
 
 Module Information          Static   Overlayable
@@ -76,6 +67,8 @@ Module Information          Static   Overlayable
   data size            =    ------     ------
   idata size           =    ------     ------
   pdata size           =    ------     ------
+C251 COMPILER V5.60.0,  motor                                                              11/01/26  21:17:35  PAGE 2   
+
   xdata size           =    ------     ------
   xdata-const size     =    ------     ------
   edata size           =    ------     ------

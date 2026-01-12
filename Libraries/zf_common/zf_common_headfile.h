@@ -104,7 +104,7 @@
 #include "servo_control.h"
 #include "encoder.h"
 #include "ble6a20.h"
-#include "imu660ra.h"
+#include "posture_sensor.h"
 #include "tft180.h"
 
 #endif

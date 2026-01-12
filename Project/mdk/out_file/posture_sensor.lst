@@ -1,0 +1,100 @@
+C251 COMPILER V5.60.0,  posture_sensor                                                     11/01/26  21:22:08  PAGE 1   
+
+
+C251 COMPILER V5.60.0, COMPILATION OF MODULE posture_sensor
+OBJECT MODULE PLACED IN .\out_file\posture_sensor.obj
+COMPILER INVOKED BY: D:\Keil\C251\BIN\C251.EXE ..\code\posture_sensor.c LARGE NOALIAS FLOAT64 WARNINGLEVEL(3) OPTIMIZE(S
+                    -IZE) BROWSE INCDIR(..\..\libraries\zf_common;..\..\libraries\zf_components;..\..\libraries\zf_device;..\..\libraries\zf_
+                    -driver;..\user;..\code) DEBUG PRINT(.\out_file\posture_sensor.lst) OBJECT(.\out_file\posture_sensor.obj) 
+
+stmt  level    source
+
+    1          #include "zf_common_headfile.h"
+    2          
+    3          // 函数作用：姿态传感器初始化
+    4          // 使用示例: posture_sensor_init();
+    5          void posture_sensor_init(void)
+    6          {
+    7   1          while(icm20602_init())
+    8   1          {
+    9   2              printf("posture sensor init error.\r\n");
+   10   2              system_delay_ms(100);
+   11   2          }
+   12   1          printf("posture sensor init success.\r\n");
+   13   1      }
+   14          
+   15          // 函数作用：获取姿态传感器数据
+   16          // 使用示例: posture_sensor_get_data();
+   17          void posture_sensor_get_data(void)
+   18          {
+   19   1          icm20602_get_acc();
+   20   1          icm20602_get_gyro();
+   21   1      }
+   22          
+   23          // 函数作用：获取x轴上姿态传感器加速度数据，单位g(m/s^2)
+   24          // 使用示例: acc_x = posture_sensor_get_acc_x();
+   25          float posture_sensor_get_acc_x(void)
+   26          {
+   27   1          return icm20602_acc_transition(icm20602_acc_x);
+   28   1      }
+   29          
+   30          // 函数作用：获取y轴上姿态传感器加速度数据，单位g(m/s^2)
+   31          // 使用示例: acc_y = posture_sensor_get_acc_y();
+   32          float posture_sensor_get_acc_y(void)
+   33          {
+   34   1          return icm20602_acc_transition(icm20602_acc_y);
+   35   1      }
+   36          
+   37          // 函数作用：获取z轴上姿态传感器加速度数据，单位g(m/s^2)
+   38          // 使用示例: acc_z = posture_sensor_get_acc_z();
+   39          float posture_sensor_get_acc_z(void)
+   40          {
+   41   1          return icm20602_acc_transition(icm20602_acc_z);
+   42   1      }
+   43          
+   44          // 函数作用：获取x轴上姿态传感器陀螺仪数据，单位°/s
+   45          // 使用示例: gyro_x = posture_sensor_get_gyro_x();
+   46          float posture_sensor_get_gyro_x(void)
+   47          {
+   48   1          return icm20602_gyro_transition(icm20602_gyro_x);
+   49   1      }
+   50          
+   51          // 函数作用：获取y轴上姿态传感器陀螺仪数据，单位°/s
+   52          // 使用示例: gyro_y = posture_sensor_get_gyro_y();
+   53          float posture_sensor_get_gyro_y(void)
+   54          {
+   55   1          return icm20602_gyro_transition(icm20602_gyro_y);
+   56   1      }
+   57          
+C251 COMPILER V5.60.0,  posture_sensor                                                     11/01/26  21:22:08  PAGE 2   
+
+   58          // 函数作用：获取z轴上姿态传感器陀螺仪数据，单位°/s
+   59          // 使用示例: gyro_z = posture_sensor_get_gyro_z();
+   60          float posture_sensor_get_gyro_z(void)
+   61          {
+   62   1          return icm20602_gyro_transition(icm20602_gyro_z);
+   63   1      }
+
+
+Module Information          Static   Overlayable
+------------------------------------------------
+  code size            =       186     ------
+  ecode size           =    ------     ------
+  data size            =    ------     ------
+  idata size           =    ------     ------
+  pdata size           =    ------     ------
+  xdata size           =    ------     ------
+  xdata-const size     =    ------     ------
+  edata size           =    ------     ------
+  bit size             =    ------     ------
+  ebit size            =    ------     ------
+  bitaddressable size  =    ------     ------
+  ebitaddressable size =    ------     ------
+  far data size        =    ------     ------
+  huge data size       =    ------     ------
+  const size           =    ------     ------
+  hconst size          =        60     ------
+End of Module Information.
+
+
+C251 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

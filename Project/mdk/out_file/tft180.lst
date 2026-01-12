@@ -1,4 +1,4 @@
-C251 COMPILER V5.60.0,  tft180                                                             04/12/25  23:04:59  PAGE 1   
+C251 COMPILER V5.60.0,  tft180                                                             11/01/26  21:17:37  PAGE 1   
 
 
 C251 COMPILER V5.60.0, COMPILATION OF MODULE tft180
@@ -19,10 +19,10 @@ stmt  level    source
     8          
     9          void LCD_Disp(void)
    10          {
-   11   1              tft180_show_string (0,16*0,"Encoder_Left:");
-   12   1              tft180_show_int16 (0,16*1,Encoder_Left_Get());
+   11   1              tft180_show_string (0,16*0,"Encoder_Left:");                   
+   12   1              tft180_show_int16 (0,16*1,Encoder_Left_Get());                  //显示左编码器转速
    13   1              tft180_show_string (0,16*2,"Encoder_Right:");
-   14   1              tft180_show_int16 (0,16*3,Encoder_Right_Get());
+   14   1              tft180_show_int16 (0,16*3,Encoder_Right_Get());                 //显示右编码器转速
    15   1      
    16   1      }
 
